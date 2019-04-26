@@ -210,9 +210,22 @@ class Player(object):
         """
         self.current_location = new_location
 
+    def equip(self):
+        print("Which item do i equip")
+        for num, item in enumerate(self.inventory):
+            print(str(num + 1) + ": " + item.name)
+        print()
+        index = -1
+        while 0 > index or index > len(self.inventory):
+            try:
+                index = int(input(">_ "))
+            except ValueError:
+                print("That is no number")
+        item_to_equip = self.inventory[index - 1]
 
-R19A = Rooms('This is the safe room', None, None, None, None, "There's some items in the room type search to see them"
-             " ,now type take to take the item you want with the number of said item then "
+
+R19A = Rooms('This is the safe room', None, None, None, None, "There's some items in the room type search to see "
+             "them ,now type take to take the item you want with the number of said item then "
              "type inventory", None, None, [written_paper, wooden_bat])
 parking_lot = Rooms('The parking lot', None, None, None, None, "Its the destroyed parking lot but it has a bad felling"
                                                                " with it", None, None, [winnie_plushie])
